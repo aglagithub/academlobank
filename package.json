@@ -1,0 +1,12 @@
+{
+  "name": "academlobank",
+  "version": "1.0.0",
+  "description": "Academlo Bank",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Andres Gilberto Lara Amaya",
+  "license": "ISC"
+}
