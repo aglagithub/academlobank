@@ -9,9 +9,8 @@ require('dotenv').config();
 //console.log('process:', process )
 //console.log('process.env', process.env)
 
-
 // routes:
-const userRoutes = require('./routes/user.route')
+const userRoutes = require('./routes/user.route');
 const transferRoutes = require('./routes/transfer.route');
 //pend: const AppError = require('./utils/appError');
 //pend: const globalErrorHandler = require('./controllers/error.controller');
@@ -26,25 +25,25 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 //routes:
-app.use('/api/v1/users', userRoutes)
-app.use('/api/v1/transfers', transferRoutes)
+app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/transfers', transferRoutes);
 
 //captura de rutas inexistentes
 app.all('*', (req, res, next) => {
-    return res.status(400).json({
+  return res.status(400).json({
     status: 'error',
-      message: `!Can´t find ${req.originalUrl} on This server!`,
+    message: `!Can´t find ${req.originalUrl} on This server!`,
   });
 
-const err = new Error(`!Can´t find ${req.originalUrl} on This server!`)
-err.status = 'error'
-err.statusCode = 404;
+  const err = new Error(`!Can´t find ${req.originalUrl} on This server!`);
+  err.status = 'error';
+  err.statusCode = 404;
 
   //Propagación del mesaje de error a las siguietes etapas
-next(err);
+  next(err);
 
-//return next(new AppError(`!Can´t find ${req.originalUrl} on This server!`, 404));
-return next();
+  //return next(new AppError(`!Can´t find ${req.originalUrl} on This server!`, 404));
+  return next();
 });
 
 //Middleware para manejo centralizado de errores
